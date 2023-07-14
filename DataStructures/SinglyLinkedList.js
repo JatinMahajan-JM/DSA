@@ -55,6 +55,26 @@ class SingleLinkedList {
     else this.head = node;
     this.length++;
   }
+
+  get(index) {
+    if (index < 0 || index > this.length - 1) return undefined;
+    let current = this.head,
+      count = 0;
+    while (count !== index) {
+      current = current.next;
+      count++;
+    }
+    return current;
+  }
+
+  set(index, value) {
+    const node = this.get(index);
+    if (node) {
+      node.value = value;
+      return true;
+    }
+    return false;
+  }
 }
 
 const list = new SingleLinkedList();
@@ -68,4 +88,6 @@ const list = new SingleLinkedList();
 list.unshift("Unshifted val");
 list.unshift("Unshift val2");
 list.unshift("Unshift val3");
+console.log(list.get(1));
+list.set(0, "set value");
 console.log(list);
