@@ -47,14 +47,25 @@ class SingleLinkedList {
     this.length--;
     return shifted;
   }
+
+  unshift(value) {
+    const node = new Node(value);
+    node.next = this.head;
+    if (!this.head) this.head = this.tail = node;
+    else this.head = node;
+    this.length++;
+  }
 }
 
 const list = new SingleLinkedList();
-list.push("value 1");
-list.push("value 2");
-list.push("value 3");
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.shift());
+// list.push("value 1");
+// list.push("value 2");
+// list.push("value 3");
 // console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.shift());
+// console.log(list.pop());
+list.unshift("Unshifted val");
+list.unshift("Unshift val2");
+list.unshift("Unshift val3");
 console.log(list);
