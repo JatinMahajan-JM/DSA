@@ -6,6 +6,8 @@ class Node {
 }
 
 class SingleLinkedList {
+  //insertion - 0(1)
+  //removal, searching and accessing - 0(N)
   constructor() {
     this.head = null;
     this.tail = null;
