@@ -95,6 +95,20 @@ class SingleLinkedList {
     prev.next = prev.next.next;
     this.length--;
   }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let prev = null;
+    while (node !== null) {
+      let next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+  }
 }
 
 const list = new SingleLinkedList();
@@ -103,10 +117,10 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.set(0, -1);
-list.remove(2);
 console.group(
   "\u001b[" + 32 + "m" + "----------------NEW LINE-----------" + "\u001b[0m"
 );
+list.reverse();
 for (let i = 0; i < list.length; i++) {
   console.group(
     list.get(i),
