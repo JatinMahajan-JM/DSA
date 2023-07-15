@@ -75,6 +75,27 @@ class SingleLinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return null;
+    if (index === 0) return this.unshift(value);
+    if (index === this.length) return this.push(value);
+    // let count = 0,
+    //   current = this.head;
+    // while (count !== index - 1) {
+    //   current = current.next;
+    //   count++;
+    // }
+    const node = new Node(value);
+    // node.next = current.next;
+    // current.next = node;
+    // this.length++;
+
+    const prev = this.get(index - 1);
+    node.next = prev.next;
+    prev.next = node;
+    this.length++;
+  }
 }
 
 const list = new SingleLinkedList();
@@ -90,4 +111,8 @@ list.unshift("Unshift val2");
 list.unshift("Unshift val3");
 console.log(list.get(1));
 list.set(0, "set value");
+list.insert(2, "The insert method");
 console.log(list);
+for (let i = 0; i < list.length; i++) {
+  console.group(list.get(i), "\u001b[" + 31 + "m" + "List Item" + "\u001b[0m");
+}
