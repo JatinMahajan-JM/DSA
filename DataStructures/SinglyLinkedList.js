@@ -80,39 +80,36 @@ class SingleLinkedList {
     if (index < 0 || index > this.length) return null;
     if (index === 0) return this.unshift(value);
     if (index === this.length) return this.push(value);
-    // let count = 0,
-    //   current = this.head;
-    // while (count !== index - 1) {
-    //   current = current.next;
-    //   count++;
-    // }
     const node = new Node(value);
-    // node.next = current.next;
-    // current.next = node;
-    // this.length++;
-
     const prev = this.get(index - 1);
     node.next = prev.next;
     prev.next = node;
     this.length++;
   }
+
+  remove(index) {
+    if (index < 0 || index > this.length - 1) return null;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+    const prev = this.get(index - 1);
+    prev.next = prev.next.next;
+    this.length--;
+  }
 }
 
 const list = new SingleLinkedList();
-// list.push("value 1");
-// list.push("value 2");
-// list.push("value 3");
-// console.log(list.pop());
-// console.log(list.pop());
-// console.log(list.shift());
-// console.log(list.pop());
-list.unshift("Unshifted val");
-list.unshift("Unshift val2");
-list.unshift("Unshift val3");
-console.log(list.get(1));
-list.set(0, "set value");
-list.insert(2, "The insert method");
-console.log(list);
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+list.set(0, -1);
+list.remove(2);
+console.group(
+  "\u001b[" + 32 + "m" + "----------------NEW LINE-----------" + "\u001b[0m"
+);
 for (let i = 0; i < list.length; i++) {
-  console.group(list.get(i), "\u001b[" + 31 + "m" + "List Item" + "\u001b[0m");
+  console.group(
+    list.get(i),
+    "\u001b[" + 31 + "m" + "List Item " + i + "\u001b[0m"
+  );
 }
