@@ -108,6 +108,18 @@ class DoublyLinkedList {
     this.length++;
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index > this.length - 1) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length) return this.pop();
+    let node = this.get(index);
+    node.prev.next = node.next;
+    node.next.prev = node.prev;
+    node.next = node.prev = null;
+    this.length--;
+    return node;
+  }
 }
 
 const list = new DoublyLinkedList();
@@ -115,7 +127,7 @@ list.push(0);
 list.push(1);
 list.push(2);
 list.push(3);
-list.insert(1, 2000);
+list.remove(2);
 console.group(
   "\u001b[" + 31 + "m" + "----------------NEW LINE-----------" + "\u001b[0m"
 );
@@ -125,5 +137,3 @@ for (let i = 0; i < list.length; i++) {
     "\u001b[" + 32 + "m" + "List Item " + i + "\u001b[0m"
   );
 }
-console.log(list.get(1).prev);
-// console.log(list);
