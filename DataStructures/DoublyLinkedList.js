@@ -82,17 +82,40 @@ class DoublyLinkedList {
       return current;
     }
   }
+
+  set(index, value) {
+    if (index < 0 || index > this.length - 1) return undefined;
+    let node = this.get(index);
+    if (node) {
+      node.value = value;
+      return true;
+    }
+    return false;
+  }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return undefined;
+    if (index === 0) this.unshift(value);
+    if (index === this.length) this.push(value);
+    else {
+      const node = new Node(value);
+      const outNode = this.get(index - 1);
+      outNode.next.prev = node; // 1 = 2 = 3 = 4
+      node.next = outNode.next;
+      outNode.next = node;
+      node.prev = outNode;
+    }
+    this.length++;
+    return true;
+  }
 }
 
 const list = new DoublyLinkedList();
+list.push(0);
 list.push(1);
 list.push(2);
 list.push(3);
-list.push(4);
-// list.pop();
-// console.log(list.shift());
-console.log(list.get(1));
-console.log(list.get(3));
+list.insert(1, 2000);
 console.group(
   "\u001b[" + 31 + "m" + "----------------NEW LINE-----------" + "\u001b[0m"
 );
@@ -102,4 +125,5 @@ for (let i = 0; i < list.length; i++) {
     "\u001b[" + 32 + "m" + "List Item " + i + "\u001b[0m"
   );
 }
+console.log(list.get(1).prev);
 // console.log(list);
