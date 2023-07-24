@@ -29,6 +29,44 @@ class Graph {
     }
     delete this.adjacencyList[vertex];
   }
+
+  depthFirstRec(start) {
+    const result = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList;
+
+    (function dfs(vertex) {
+      if (!vertex) return null;
+      visited[vertex] = true;
+      result.push(vertex);
+      adjacencyList[vertex].forEach((v) => {
+        if (!visited[v]) {
+          return dfs(v);
+        }
+      });
+    })(start);
+
+    return result;
+  }
+
+  depthFirstIterate(start) {
+    const stack = [start];
+    const visited = {};
+    const result = [];
+    visited[start] = true;
+    let currVertex;
+    while (stack.length) {
+      currVertex = stack.pop();
+      result.push(currVertex);
+      this.adjacencyList[currVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          stack.push(neighbor);
+          visited[neighbor] = true;
+        }
+      });
+    }
+    return result;
+  }
 }
 
 const graph = new Graph();
@@ -42,4 +80,6 @@ graph.addEdge("v2", "v1");
 graph.addEdge("v4", "v3");
 // graph.removeEdge("v1", "v2");
 graph.removeVertex("v1");
+console.log(graph.depthFirstRec("v2"));
+console.log(graph.depthFirstIterate("v2"));
 console.log(graph);
