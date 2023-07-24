@@ -21,6 +21,14 @@ class Graph {
       (vertex) => vertex !== v1
     );
   }
+
+  removeVertex(vertex) {
+    while (this.adjacencyList[vertex].length) {
+      const currVertex = this.adjacencyList[vertex].pop();
+      this.removeEdge(currVertex, vertex);
+    }
+    delete this.adjacencyList[vertex];
+  }
 }
 
 const graph = new Graph();
@@ -32,5 +40,6 @@ graph.addEdge("v1", "v4");
 graph.addEdge("v2", "v3");
 graph.addEdge("v2", "v1");
 graph.addEdge("v4", "v3");
-graph.removeEdge("v1", "v2");
+// graph.removeEdge("v1", "v2");
+graph.removeVertex("v1");
 console.log(graph);
