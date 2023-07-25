@@ -67,6 +67,25 @@ class Graph {
     }
     return result;
   }
+
+  breadthFirstSearch(start) {
+    const queue = [start];
+    const visited = {};
+    const result = [];
+    visited[start] = true;
+    let currVertex;
+    while (queue.length) {
+      currVertex = queue.shift();
+      result.push(currVertex);
+      this.adjacencyList[currVertex].forEach((v) => {
+        if (!visited[v]) {
+          visited[v] = true;
+          queue.push(v);
+        }
+      });
+    }
+    return result;
+  }
 }
 
 const graph = new Graph();
@@ -79,7 +98,8 @@ graph.addEdge("v2", "v3");
 graph.addEdge("v2", "v1");
 graph.addEdge("v4", "v3");
 // graph.removeEdge("v1", "v2");
-graph.removeVertex("v1");
-console.log(graph.depthFirstRec("v2"));
-console.log(graph.depthFirstIterate("v2"));
+// graph.removeVertex("v1");
+// console.log(graph.depthFirstRec("v2"));
+// console.log(graph.depthFirstIterate("v2"));
+console.log(graph.breadthFirstSearch("v1"));
 console.log(graph);
