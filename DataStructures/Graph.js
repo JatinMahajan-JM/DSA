@@ -1,4 +1,5 @@
 //Undirected & Unweighted adjacent list graph
+//To make it more efficient we can use set for keeping track of visited node and a map to use as a adjacency List
 class Graph {
   constructor() {
     this.adjacencyList = {};

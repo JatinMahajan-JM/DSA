@@ -10,3 +10,8 @@ console.warn("This feature is deprecated. Please update your code.");
 console.error("An error occurred!");
 
 console.log(JSON.stringify(data[0], null, 1));
+
+const currentDate = new Date(Date.now());
+currentDate.setHours(14);
+currentDate.setMinutes(42);
+console.log(currentDate.getTime() - Date.now());
