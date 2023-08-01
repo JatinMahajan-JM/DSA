@@ -31,6 +31,11 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
+  //1. Start with the given vertex, mark it as visited and push in traversed Array.
+  //2. Select the vertex's first neighbor, mark it as visited and push
+  //3. Move to neighbor's neighbor, check its neighbors, don't do anything on already visited vertex
+  //4. Repeat.
+  // Start -> First or Left neighbor -> It's neighbor -> It's neighbor (check if its neighbor is visited)
   depthFirstRec(start) {
     const result = [];
     const visited = {};
@@ -69,6 +74,11 @@ class Graph {
     return result;
   }
 
+  // 1. Start
+  // 2. Visit first then second neighbor
+  // 3. Visit first neighbor's all neighbors (only to one level)
+  // 4. Visit seconds neighbor's all neighbors
+  // 5. Repeat
   breadthFirstSearch(start) {
     const queue = [start];
     const visited = {};
@@ -100,7 +110,7 @@ graph.addEdge("v2", "v1");
 graph.addEdge("v4", "v3");
 // graph.removeEdge("v1", "v2");
 // graph.removeVertex("v1");
-// console.log(graph.depthFirstRec("v2"));
+console.log(graph.depthFirstRec("v1"));
 // console.log(graph.depthFirstIterate("v2"));
 console.log(graph.breadthFirstSearch("v1"));
 console.log(graph);
