@@ -100,7 +100,7 @@ class WeightedGraph {
     while (nodes.values.length) {
       smallest = nodes.dequeue().val;
       if (smallest === finish) {
-        // this is the base case
+        // this is the base case means we are done 
         while (previous[smallest]) {
           path.push(smallest);
           smallest = previous[smallest];
