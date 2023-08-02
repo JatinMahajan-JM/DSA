@@ -1,4 +1,6 @@
-//Graphs
-//Heaps & PriorityQueue
-//WeightedGraph
+//Graphs -> Node with edges
+//Heaps -> Parent and child formula (just an array)
+//& PriorityQueue -> nodes with {value, priority}
+//WeightedGraph -> nodes with {value, weight}
+//dijkstra Algorithms -> Makes use of priorityQueue
 //HashMap
