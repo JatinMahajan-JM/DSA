@@ -24,7 +24,7 @@ class HashMap {
     const index = this._hash(key);
     if (!this.keyMap[index]) return;
     for (let i = 0; i < this.keyMap[index].length; i++) {
-      if (key === this.keyMap[index][i][0]) return this.keyMap[index][1];
+      if (key === this.keyMap[index][i][0]) return this.keyMap[index][i];
     }
     return undefined;
   }
