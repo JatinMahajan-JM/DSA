@@ -4,6 +4,6 @@
 //WeightedGraph -> nodes with {value, weight}
 //dijkstra Algorithms -> Makes use of priorityQueue
 //HashMap
-//Trees, BinarySearchTree
+//Trees, BinarySearchTree -> bst, the child on right are bigger than parent and left child are smaller.
 //Stack, Queue
 //Linked List - singly, doubly
