@@ -6,8 +6,6 @@ function checkAnagram(str1, str2) {
     obj1[item] = (obj1[item] ?? 0) + 1;
   }
 
-  console.log(obj1)
-
   for (let item of str2) {
     if (!obj1[item]) return false;
     else obj1[item] -= 1;
