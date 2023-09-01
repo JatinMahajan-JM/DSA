@@ -52,7 +52,8 @@ class MaxBinaryHeap {
     let element = this.values.pop();
     let currentindex = 0;
     if (this.values.length > 0) {
-      this.values[0] = this.values.pop();
+      // this.values[0] = this.values.pop();
+      this.values[0] = element;
       const length = this.values.length;
 
       while (true) {
